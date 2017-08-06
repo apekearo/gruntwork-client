@@ -6,7 +6,7 @@
         </app-nav>
         <main>
             <v-container fluid :class="{'app__content--no-padding': currentPage === 'app-home'}" class="app__content">
-                <component :is="currentPage"></component>
+                <component :is="currentPage" :onClickStartBtn="onChangePage"></component>
                 <!--v-router-->
             </v-container>
         </main>
