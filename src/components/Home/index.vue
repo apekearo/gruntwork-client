@@ -1,6 +1,5 @@
 <template>
-    <v-layout class="home">
-        <img :src="landingImg" alt="A group of workers" class="home__bg">
+    <v-layout class="home" :style="{backgroundImage: imgStyle}">
     </v-layout>
 </template>
 
@@ -11,15 +10,21 @@
             return {
                 landingImg: workersImg
             }
+        },
+        computed: {
+            imgStyle() {
+                return `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${this.landingImg})`
+            }
         }
     }
 </script>
 
 <style scoped>
-    .home__bg {
-        margin-top: 64px;
-        height: calc(100vh - 64px);
-        width: 100vw
+    .home {
+        background: no-repeat center center fixed;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
     }
 </style>
 
