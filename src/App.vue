@@ -1,9 +1,12 @@
 <template>
-    <v-app>
-        <app-nav :items="headerItems"></app-nav>
+    <v-app class="app">
+        <app-nav :items="headerItems"
+                 :onClickItem="onChangePage"
+        >
+        </app-nav>
         <main>
-            <v-container fluid>
-                <div class="title">Click on sidebar to re-open.</div>
+            <v-container fluid :class="{'app__content--no-padding': currentPage === 'app-home'}" class="app__content">
+                <component :is="currentPage"></component>
                 <!--v-router-->
             </v-container>
         </main>
@@ -43,6 +46,7 @@
 <script>
     // import listGroup from './components/JobList/list-group.vue'
     import Nav from './components/header.vue';
+    import Home from './components/Home/index.vue';
     import map from './components/Map/index.vue'
     import table from './components/Table/index.vue'
     import tabs from './components/Table/tabs.vue'
@@ -50,22 +54,36 @@
     export default {
         components: {
             // appListGroup: listGroup,
-            tableGrid: table,
-            appMap: map,
+            appJobBoard: table,
+            appPost: map,
             tabs: tabs,
-            appNav: Nav
+            appNav: Nav,
+            appHome: Home
         },
         data () {
             return {
                 headerItems: [
-                    { title: 'Job board', icon: 'dashboard' },
-                    { title: 'Post a job', icon: 'work' }
-                ]
+                    { title: 'Home', icon: 'home', component: 'app-home' },
+                    { title: 'Job board', icon: 'dashboard', component: 'app-job-board' },
+                    { title: 'Post a job', icon: 'work', component: 'app-post' }
+                ],
+                currentPage: 'app-home'
+            }
+        },
+        methods: {
+            onChangePage (componentName) {
+                this.currentPage = componentName
             }
         }
     }
 </script>
 
 <style scoped>
-    .headline {display: inline}
+    .headline {
+        display: inline
+    }
+
+    .app__content--no-padding {
+        padding: 0
+    }
 </style>
