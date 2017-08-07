@@ -11,17 +11,27 @@
                         GET STARTED
                     </v-btn>
                 </div>
-            </v-card-text>
+                <div class="text-xs-center">
+                    <v-btn large dark class="button" @click="onClickStartBtn('sign-up-modal')">
+                        Sign Up
+                    </v-btn>
+                </div>
+           </v-card-text>
         </v-card>
     </v-layout>
 </template>
 
 <script>
     import workersImg from '../../assets/images/workers.jpg';
+    import signUpModal from '../Register/signUp.vue';
+
     export default {
+        components: {
+            signUpModal: signUpModal
+        },
         data () {
             return {
-                landingImg: workersImg
+                landingImg: workersImg,
             }
         },
         props: {

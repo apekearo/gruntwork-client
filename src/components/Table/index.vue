@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="pt-5">
     <v-card-title>
       Nutrition
       <v-spacer></v-spacer>
