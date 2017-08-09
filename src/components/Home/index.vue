@@ -12,9 +12,11 @@
                     </v-btn>
                 </div>
                 <div class="text-xs-center">
-                    <v-btn large dark class="button" @click="onClickStartBtn('sign-up-modal')">
-                        Sign Up
-                    </v-btn>
+                    <app-modal>
+                        <v-btn large dark class="button" slot="button">
+                            Sign Up
+                        </v-btn>
+                    </app-modal>
                 </div>
            </v-card-text>
         </v-card>
@@ -27,7 +29,7 @@
 
     export default {
         components: {
-            signUpModal: signUpModal
+            appModal: signUpModal,
         },
         data () {
             return {
