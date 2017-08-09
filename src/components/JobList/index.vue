@@ -1,5 +1,5 @@
 <template>
-  <v-card class="pt-5">
+  <v-card class="pt-5 app__table">
     <v-card-title>
       Nutrition
       <v-spacer></v-spacer>
@@ -203,3 +203,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .app__table {
+    margin-top: 64px;
+  }
+</style>

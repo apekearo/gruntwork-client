@@ -48,19 +48,18 @@
     import Nav from './components/header.vue';
     import Home from './components/Home/index.vue';
     import map from './components/Map/index.vue';
-    import table from './components/Table/index.vue';
+    import table from './components/JobList/index.vue';
     import tabs from './components/Table/tabs.vue';
-    import signUpModal from './components/Register/signUp.vue'
+    import JobPostForm from './components/Post/index.vue';
 
     export default {
         components: {
             // appListGroup: listGroup,
             appJobBoard: table,
-            appPost: map,
             tabs: tabs,
             appNav: Nav,
             appHome: Home,
-            signUpModal: signUpModal
+            appPost: JobPostForm
         },
         data () {
             return {
