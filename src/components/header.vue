@@ -30,7 +30,7 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar fixed class="indigo darken-4" dark>
+        <v-toolbar fixed class="blue lighten-1" dark>
             <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>{{title}}</v-toolbar-title>
         </v-toolbar>

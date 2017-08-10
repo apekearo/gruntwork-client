@@ -1,53 +1,43 @@
 <template>
-  <div class="google-map" :id="mapName"></div>
+  <gmap-map
+    :center="center"
+    :zoom="7"
+    style="width: 500px; height: 300px"
+  >
+    <gmap-marker
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="true"
+      @click="center=m.position"
+    ></gmap-marker>
+  </gmap-map>
 </template>
+ 
 <script>
-export default {
-  name: 'google-map',
-  props: ['name'],
-  data: function () {
-    return {
-      mapName: this.name + "-map",
-      markerCoordinates: [{
-        latitude: 51.501527,
-        longitude: -0.1921837
-      }, {
-        latitude: 51.505874,
-        longitude: -0.1838486
-      }, {
-        latitude: 51.4998973,
-        longitude: -0.202432
-      }],
-      map: null,
-      bounds: null,
-      markers: []
+  ///////////////////////////////////////// 
+  // New in 0.4.0 
+  import * as VueGoogleMaps from 'vue2-google-maps';
+  import Vue from 'vue';
+ 
+  Vue.use(VueGoogleMaps, {
+    load: {
+      key: 'AIzaSyCC2bn09ZM8jNrPx2UDsb96a0ql3BTssvs',
+     libraries: 'places' //// If you need to use place input 
     }
-  },
-  mounted: function () {
-    this.bounds = new google.maps.LatLngBounds();
-    const element = document.getElementById(this.mapName)
-    const mapCentre = this.markerCoordinates[0]
-    const options = {
-      center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+  });
+ 
+  export default {
+    data () {
+      return {
+        center: {lat: 10.0, lng: 10.0},
+        markers: [{
+          position: {lat: 10.0, lng: 10.0}
+        }, {
+          position: {lat: 11.0, lng: 11.0}
+        }]
+      }
     }
-    this.map = new google.maps.Map(element, options);
-    this.markerCoordinates.forEach((coord) => {
-      const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-      const marker = new google.maps.Marker({ 
-        position,
-        map: this.map
-      });
-    this.markers.push(marker)
-      this.map.fitBounds(this.bounds.extend(position))
-    });
   }
-};
-</script>
-<style scoped>
-.google-map {
-  width: 50vw;
-  height: 50vw;
-  margin: 0 auto;
-  background: gray;
-}
-</style>
+</script> 

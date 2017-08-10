@@ -11,16 +11,16 @@
         <v-card-text>
           <v-text-field label="Email" required></v-text-field>
           <v-text-field label="Password" type="password" required></v-text-field>
-          <v-text-field label="Phone Number" required></v-text-field>
-          <v-text-field label="Location" hint="example of helper text only on focus"></v-text-field>
-          <v-text-field label="Legal last name" hint="example of persistent helper text"
+          <v-text-field label="First Name" required></v-text-field>
+          <v-text-field label="Last Name"></v-text-field>
+          <v-text-field label="Phone Number" hint="***-***-****"
                         persistent-hint
                         required
           ></v-text-field>
           <v-select
-                  label="Age"
+                  label="Transportation"
                   required
-                  :items="['0-17', '18-29', '30-54', '54+']"
+                  :items="['Need a ride', 'Can get to location on time fine.', 'Will give another a ride']"
           ></v-select>
           <v-select
                   label="Interests"

@@ -7,13 +7,13 @@
                     With or without internet, with or without a car
                 </p>
                 <div class="text-xs-center">
-                    <v-btn large dark class="home__button" @click="onClickStartBtn('app-job-board')">
-                        GET STARTED
+                    <v-btn large dark class="cyan darken-4 home__button" @click="onClickStartBtn('app-job-board')">
+                        Post List
                     </v-btn>
                 </div>
                 <div class="text-xs-center">
                     <app-modal>
-                        <v-btn large dark class="button" slot="button">
+                        <v-btn large dark class="red darken-4 button" slot="button">
                             Sign Up
                         </v-btn>
                     </app-modal>

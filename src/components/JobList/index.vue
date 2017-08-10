@@ -1,4 +1,29 @@
 <template>
+<div>
+  <v-layout row wrap child-flex-sm>
+    <v-flex xs12>
+<map class="map"
+style="position: absolute; left:0; top:0; z-index: 0;"
+    :center.sync="center"
+    :zoom.sync="zoom"
+    :options="{styles: mapStyles, scrollwheel: scrollwheel}"
+>
+   <marker 
+      v-for="m in markers"
+      :position.sync="m.position"
+      :clickable="true"
+      :draggable="false"
+      @g-click="center=m.position"
+    >
+   <info-window
+      :opened.sync="m.ifw"
+      :content="m.ifw2text"
+      ></info-window>
+  </marker>
+</map>
+
+    </v-flex>
+    <v-flex xs12>
   <v-card class="pt-5 app__table">
     <v-card-title>
       Nutrition
@@ -64,9 +89,13 @@
       </template>
     </v-data-table>
   </v-card>
+    </v-flex>
+  </v-layout>
+  </div>
 </template>
 
 <script>
+  import map from '../Map/index.vue'
   export default {
     data () {
       return {
@@ -208,4 +237,8 @@
   .app__table {
     margin-top: 64px;
   }
+.map {
+width: 75%;
+height: 300px
+}
 </style>
