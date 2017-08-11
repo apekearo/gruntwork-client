@@ -11,6 +11,7 @@
                            :currentUser="currentUser"
                            :register="register"
                            :login="login"
+                           :getPosts="getPosts"
                 >
                 </component>
                 <!--v-router-->
@@ -90,11 +91,14 @@
                     .catch(err => console.log(err.message))
             },
             register (user) {
-                console.log(user, 'I am in the root');
                 this.axios.post("http://localhost:3000/api/register", user)
                     .then((response) => {
                         this.currentUser = response.data;
                     })
+                    .catch(err => console.log(err.message))
+            },
+            getPosts () {
+                return this.axios.get("http://localhost:3000/api/posts")
                     .catch(err => console.log(err.message))
             }
         }
