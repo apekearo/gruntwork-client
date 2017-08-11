@@ -12,6 +12,7 @@
                            :register="register"
                            :login="login"
                            :getPosts="getPosts"
+                           :createPost="createPost"
                 >
                 </component>
                 <!--v-router-->
@@ -99,6 +100,13 @@
             },
             getPosts () {
                 return this.axios.get("http://localhost:3000/api/posts")
+                    .catch(err => console.log(err.message))
+            },
+            createPost (post) {
+                return this.axios.post("http://localhost:3000/api/posts", post)
+                    .then((res) => {
+                        console.log('Yay! It worked!', res)
+                    })
                     .catch(err => console.log(err.message))
             }
         }

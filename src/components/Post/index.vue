@@ -6,27 +6,42 @@
           <span class="headline">Job Post</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field label="Pay Amount" required></v-text-field>
-          <v-text-field label="Phone Number" hint="example of helper text only on focus"></v-text-field>
-          <v-text-field label="Job Description" hint="example of persistent helper text"
+          <v-text-field label="Pay Amount" required v-model="post.payAmount"></v-text-field>
+          <v-text-field label="Phone Number"
+                        hint="example of helper text only on focus"
+                        v-model="post.phone"
+          >
+          </v-text-field>
+          <v-text-field label="Job Description"
+                        hint="example of persistent helper text"
+                        v-model="post.description"
+                        persistent-hint
+                        required
+          ></v-text-field>
+          <v-text-field label="Location Zip"
+                        hint="example of persistent helper text"
+                        v-model="post.locationZip"
                         persistent-hint
                         required
           ></v-text-field>
           <v-select
-                  label="Transportation"
+                  label="Do you have a car"
+                  v-model="post.hasCar"
                   required
-                  :items="['Need a ride', 'Can get to location on time fine.', 'Will give another a ride']"
+                  :items="[true, false]"
           ></v-select>
           <v-select
                   label="Role"
+                  v-model="post.role"
                   required
-                  :items="['Employee', 'Employer']"
+                  :items="['employee', 'employer']"
+          >
+          </v-select>
           <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="blue--text darken-1" flat @click.native="dialog = false">Close</v-btn>
-          <v-btn class="blue--text darken-1" flat @click.native="dialog = false">Save</v-btn>
+          <v-btn class="blue--text darken-1" flat @click="onClickSave">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-layout>
@@ -49,11 +64,24 @@
     export default {
         data () {
             return {
-
+              post: {
+                  payAmount: 0,
+                  phone: '',
+                  description: '',
+                  hasCar: false,
+                  role: '',
+                  locationZip: ''
+              }
             }
         },
         props: {
-            currentUser: Object
+            currentUser: Object,
+            createPost: Function,
+        },
+        methods: {
+            onClickSave () {
+                this.createPost({post: this.post, userId: this.currentUser.id})
+            }
         }
     }
 </script>
