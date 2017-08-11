@@ -6,7 +6,13 @@
         </app-nav>
         <main>
             <v-container fluid :class="{'app__content--no-padding': currentPage === 'app-home'}" class="app__content">
-                <component :is="currentPage" :onClickStartBtn="onChangePage"></component>
+                <component :is="currentPage" 
+                           :onClickStartBtn="onChangePage"
+                           :currentUser="currentUser"
+                           :register="register"
+                           :login="login"
+                >
+                </component>
                 <!--v-router-->
             </v-container>
         </main>
@@ -68,12 +74,28 @@
                     { title: 'Job board', icon: 'dashboard', component: 'app-job-board' },
                     { title: 'Post a job', icon: 'work', component: 'app-post' }
                 ],
-                currentPage: 'app-home'
+                currentPage: 'app-home',
+                currentUser: null
             }
         },
         methods: {
             onChangePage (componentName) {
                 this.currentPage = componentName
+            },
+            login (user) {
+                this.axios.post("http://localhost:3000/api/login", user)
+                    .then((response) => {
+                        this.currentUser = response.data;
+                    })
+                    .catch(err => console.log(err.message))
+            },
+            register (user) {
+                console.log(user, 'I am in the root');
+                this.axios.post("http://localhost:3000/api/register", user)
+                    .then((response) => {
+                        this.currentUser = response.data;
+                    })
+                    .catch(err => console.log(err.message))
             }
         }
     }

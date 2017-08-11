@@ -12,9 +12,15 @@
                     </v-btn>
                 </div>
                 <div class="text-xs-center">
-                    <app-modal>
+                    <app-modal :register="register">
                         <v-btn large dark class="red darken-4 button" slot="button">
                             Sign Up
+                        </v-btn>
+                    </app-modal>
+
+                    <app-modal :isLogin="true" :login="login">
+                        <v-btn large dark class="green darken-4 button" slot="button">
+                            Login
                         </v-btn>
                     </app-modal>
                 </div>
@@ -25,7 +31,7 @@
 
 <script>
     import workersImg from '../../assets/images/workers.jpg';
-    import signUpModal from '../Register/signUp.vue';
+    import signUpModal from '../Authenticate/formModal.vue';
 
     export default {
         components: {
@@ -39,7 +45,9 @@
         props: {
             onClickStartBtn: {
                 type: Function
-            }
+            },
+            login: Function,
+            register: Function,
         },
         computed: {
             imgStyle() {

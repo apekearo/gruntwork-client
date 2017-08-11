@@ -17,10 +17,6 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-
-vue.use(VueAxios, axios)
 
 Vue.axios.get(api).then((response) => {
   console.log(response.data)

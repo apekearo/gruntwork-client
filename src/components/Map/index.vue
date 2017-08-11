@@ -17,16 +17,7 @@
  
 <script>
   ///////////////////////////////////////// 
-  // New in 0.4.0 
-  import * as VueGoogleMaps from 'vue2-google-maps';
-  import Vue from 'vue';
- 
-  Vue.use(VueGoogleMaps, {
-    load: {
-      key: 'AIzaSyCC2bn09ZM8jNrPx2UDsb96a0ql3BTssvs',
-     libraries: 'places' //// If you need to use place input 
-    }
-  });
+  // New in 0.4.0
  
   export default {
     data () {
