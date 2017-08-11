@@ -6,7 +6,15 @@
         </app-nav>
         <main>
             <v-container fluid :class="{'app__content--no-padding': currentPage === 'app-home'}" class="app__content">
-                <component :is="currentPage" :onClickStartBtn="onChangePage"></component>
+                <component :is="currentPage" 
+                           :onClickStartBtn="onChangePage"
+                           :currentUser="currentUser"
+                           :register="register"
+                           :login="login"
+                           :getPosts="getPosts"
+                           :createPost="createPost"
+                >
+                </component>
                 <!--v-router-->
             </v-container>
         </main>
@@ -68,12 +76,38 @@
                     { title: 'Job board', icon: 'dashboard', component: 'app-job-board' },
                     { title: 'Post a job', icon: 'work', component: 'app-post' }
                 ],
-                currentPage: 'app-home'
+                currentPage: 'app-home',
+                currentUser: null
             }
         },
         methods: {
             onChangePage (componentName) {
                 this.currentPage = componentName
+            },
+            login (user) {
+                this.axios.post("http://localhost:3000/api/login", user)
+                    .then((response) => {
+                        this.currentUser = response.data;
+                    })
+                    .catch(err => console.log(err.message))
+            },
+            register (user) {
+                this.axios.post("http://localhost:3000/api/register", user)
+                    .then((response) => {
+                        this.currentUser = response.data;
+                    })
+                    .catch(err => console.log(err.message))
+            },
+            getPosts () {
+                return this.axios.get("http://localhost:3000/api/posts")
+                    .catch(err => console.log(err.message))
+            },
+            createPost (post) {
+                return this.axios.post("http://localhost:3000/api/posts", post)
+                    .then((res) => {
+                        console.log('Yay! It worked!', res)
+                    })
+                    .catch(err => console.log(err.message))
             }
         }
     }
