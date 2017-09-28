@@ -32,6 +32,7 @@
 </template>
 
 <script>
+
     export default {
         data () {
             return {
@@ -52,11 +53,13 @@
             },
             login: Function,
             register: Function,
+            onConfirm: Function,
         },
         methods: {
             onClickSave () {
                 this.isLogin ? this.login(this.user) : this.register({user: this.user});
                 this.dialog = false;
+                this.onConfirm();
             }
         }
     }

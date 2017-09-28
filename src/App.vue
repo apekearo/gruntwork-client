@@ -57,17 +57,20 @@
     import Home from './components/Home/index.vue';
     import map from './components/Map/index.vue';
     import table from './components/JobList/index.vue';
-    import tabs from './components/Table/tabs.vue';
     import JobPostForm from './components/Post/index.vue';
 
     export default {
         components: {
             // appListGroup: listGroup,
             appJobBoard: table,
-            tabs: tabs,
             appNav: Nav,
             appHome: Home,
             appPost: JobPostForm
+        },
+        computed: {
+            baseUrl() {
+                return process.env.NODE_ENV === "development" ? "http://localhost:3000" : "http://heyearl.herokuapp.com"
+            }
         },
         data () {
             return {
@@ -85,25 +88,25 @@
                 this.currentPage = componentName
             },
             login (user) {
-                this.axios.post("http://localhost:3000/api/login", user)
+                this.axios.post(this.baseUrl + "/api/login", user)
                     .then((response) => {
                         this.currentUser = response.data;
                     })
                     .catch(err => console.log(err.message))
             },
             register (user) {
-                this.axios.post("http://localhost:3000/api/register", user)
+                this.axios.post(this.baseUrl + "/api/register", user)
                     .then((response) => {
                         this.currentUser = response.data;
                     })
                     .catch(err => console.log(err.message))
             },
             getPosts () {
-                return this.axios.get("http://localhost:3000/api/posts")
+                return this.axios.get(this.baseUrl + "/api/posts")
                     .catch(err => console.log(err.message))
             },
             createPost (post) {
-                return this.axios.post("http://localhost:3000/api/posts", post)
+                return this.axios.post(this.baseUrl + "/api/posts", post)
                     .then((res) => {
                         console.log('Yay! It worked!', res)
                     })
