@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div id="leaves"></div>
+    <!-- <div id="leaves"></div> -->
+    <div id="yellow"></div>
     <v-layout row justify-center v-if="currentUser !== null">
       <v-card class="app__job_form">
         <v-card-title>
@@ -19,15 +20,9 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="blue--text darken-1" flat @click="onClickSave">Save</v-btn>
-          <!-- <v-alert
-              success
-              :value = "alert"
-              transition = "scale-transition"
-              >
-              You Have Posted Successfully
-            </v-alert> -->
-        </v-card-actions>
+             <!-- add an event that lets the user see they have posted and go to the list for them. -->
+          <v-btn id="post" class="blue--text darken-1" flat @click="onClickSave">POST</v-btn>
+          </v-card-actions>
       </v-card>
     </v-layout>
 
@@ -39,7 +34,7 @@
           </v-btn>
         </app-modal>
 
-        <app-modal :register="register" :onConfirm="onClickSave">
+        <app-modal :register="register" :onConfirm="onConfirm">
           <v-btn large dark class="red darken-4 button" slot="button">
             Register
           </v-btn>
@@ -78,21 +73,37 @@ export default {
     onClickStartBtn: {
       type: Function
     },
+    onChangePage: Function,
     login: Function,
     register: Function,
   },
   methods: {
     onClickSave() {
+      console.log('save!')
       this.createPost({ post: this.post, userId: this.currentUser.id })
+      .then(_ => {
+        this.onChangePage('app-job-board')
+      })
+      .catch(err => {
+
+      })
     },
-    onClickSave() {
+    onConfirm() {
       this.alert = true;
     }
   }
 }
 </script>
+<!--trying to get the page to move to the list
+after the Post button has been pushed -->
+<script type="text/javascript">document.getElementById("post").click(function(){
+   window.location.href='index.vue';
+})</script>
 
 <style>
+#yellow{
+  background-image: url('../../assets/images/yellow.jpg');
+}
 .app__job_form {
   width: 80%;
   margin: auto;

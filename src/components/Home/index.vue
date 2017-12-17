@@ -3,7 +3,7 @@
         <v-card class="home__content">
             <v-card-text>
                 <p class="text-xs-center display-2">
-                    A local list to provide and offer day gig services, Support your community, and Work locally! With or without internet. TEXT (254)400-2317 to Post or View the most recent posting.
+                    A rural list to provide and offer day gig services, Support your community, and Work locally! With or without internet. TEXT **HELLO** or **Hey Earl** to (254)400-2317 to Post or View the most recent posting within a zip code.
                 </p>
                 <div class="text-xs-center">
                     <v-btn large dark class="orange darken-4 home__button" @click="onClickStartBtn('app-job-board')">
@@ -29,6 +29,14 @@
                     >
                         {{ alertMessage }}
                     </v-alert>
+                </div>
+                <div class="text-xs-center">
+                <v-btn large dark class="purple accent-3" slot="button" @click="onClickStartBtn('app-About')">
+                    About The Creator
+                </v-btn>
+                <v-btn large dark class="cyan accent-3" slot="button" @click="onClickStartBtn('app-Terms')">
+                    Terms of Service
+                </v-btn>
                 </div>
             </v-card-text>
         </v-card>

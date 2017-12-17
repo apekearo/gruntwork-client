@@ -41,7 +41,10 @@ export default {
     axios.get(`http://localhost:3000`)
     .then(response => {
       // JSON responses are automatically parsed.
+      // console.log(response)
       this.posts = response.data
+      // console.log(this.post)
+      // return this.posts;
     })
     .catch(e => {
       this.errors.push(e)
