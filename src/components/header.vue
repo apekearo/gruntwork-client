@@ -64,7 +64,7 @@
             },
             username: {
                 type: String,
-                default: 'Tony'
+                default: 'User'
             },
             profile: {
                 type: String,

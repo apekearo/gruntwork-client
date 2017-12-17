@@ -13,6 +13,7 @@
                            :login="login"
                            :getPosts="getPosts"
                            :createPost="createPost"
+                           :onChangePage="onChangePage"
                 >
                 </component>
                 <!--v-router-->
@@ -58,10 +59,14 @@
     import map from './components/Map/index.vue';
     import table from './components/JobList/index.vue';
     import JobPostForm from './components/Post/index.vue';
+    import About from './components/About/index.vue';
+    import Terms from './components/Terms/index.vue';
 
     export default {
         components: {
             // appListGroup: listGroup,
+            appTerms: Terms,
+            appAbout: About,
             appJobBoard: table,
             appNav: Nav,
             appHome: Home,
@@ -102,6 +107,7 @@
                     .catch(err => console.log(err.message))
             },
             getPosts () {
+                console.log(process.env.NODE_ENV);
                 return this.axios.get(this.baseUrl + "/api/posts")
                     .catch(err => console.log(err.message))
             },

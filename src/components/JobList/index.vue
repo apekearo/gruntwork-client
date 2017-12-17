@@ -1,6 +1,7 @@
 <template>
   <v-flex xs12>
-          <div id="leaves"></div>
+          <!-- <div id="leaves"></div> -->
+          <div id="yellow"></div>
     <v-card class="pt-5 app__table">
       <v-card-title class="mt-0 pt-0">
         <v-switch :label="isEmployee ? 'All employees' : 'All employers'" v-model="isEmployee"></v-switch>
@@ -69,7 +70,11 @@
                 const results = this.posts
                     .map(post => {
                         const copied = Object.assign({}, post);
-                        copied.name = `${copied.User.firstName} ${copied.User.lastName}`;
+                        if (!copied.User) {
+                            copied.name = "Text User"
+                        }else {
+                            copied.name = `${copied.User.firstName} ${copied.User.lastName}`;
+                        }
                         copied.value = false;
                         return copied
                     })
@@ -93,6 +98,11 @@
 </script>
 
 <style scoped>
+#yellow{
+    background-image: url('../../assets/images/yellow.jpg');
+    height: 100%;
+    width: 100%;
+}
   .app__table {
     margin-top: 64px;
   }

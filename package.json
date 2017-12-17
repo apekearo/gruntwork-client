@@ -11,10 +11,10 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
-    "vue": "^2.4.4",
+    "vue": "^2.5.9",
     "vue-axios": "^2.0.2",
     "vue-template-compiler": "^2.4.4",
-    "vuetify": "^0.15.7",
+    "vuetify": "^0.17.4",
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
@@ -26,8 +26,8 @@
     "file-loader": "^0.9.0",
     "vue-loader": "^12.1.0",
     "vue-template-compiler": "^2.3.3",
+    "vue2-google-maps": "^0.7.10",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5",
-    "vue2-google-maps": "^0.7.10"
+    "webpack-dev-server": "^2.4.5"
   }
 }
