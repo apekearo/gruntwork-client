@@ -96,9 +96,6 @@ export default {
 </script>
 <!--trying to get the page to move to the list
 after the Post button has been pushed -->
-<script type="text/javascript">document.getElementById("post").click(function(){
-   window.location.href='index.vue';
-})</script>
 
 <style>
 #yellow{
