@@ -1,6 +1,6 @@
 <template>
-    <v-layout class="about">
-        <v-card class="about__content">
+    <v-layout class="Terms">
+        <v-card class="terms__content">
             <v-card-text></v-card-text>
             <v-card-text>
                 <div class="text-xs-center">

@@ -1,5 +1,5 @@
 <template>
-    <v-layout class="about">
+    <v-layout class="About">
         <v-card class="about__content">
             <v-card-text></v-card-text>
             <v-card-text>
@@ -22,4 +22,13 @@ A boy that was moved into Kopperl in the 80's
 <script>
     import deskImg from '../../assets/images/desk.png';
     import layingImg from '../../assets/images/laying.png';
+
+    export default {
+         data () {
+            return {
+                deskImg,
+                layingImg
+            }
+        },
+    }
 </script>

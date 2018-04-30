@@ -98,8 +98,9 @@ export default {
 after the Post button has been pushed -->
 
 <style>
+/* changing the route picture background to the public/dist on the server */
 #yellow{
-  background-image: url('../../assets/images/yellow.jpg');
+  background-image: url('/dist/yellow.jpg');
 }
 .app__job_form {
   width: 80%;

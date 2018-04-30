@@ -1,51 +1,30 @@
 <template>
     <div>
-        <v-navigation-drawer absolute persistent light :mini-variant.sync="mini" v-model="drawer" overflow>
-            <v-toolbar flat class="transparent">
-                <v-list class="pa-0">
-                    <v-list-tile avatar tag="div">
-                        <v-list-tile-avatar>
-                            <img :src='profile' />
-                        </v-list-tile-avatar>
-                        <v-list-tile-content>
-                            <v-list-tile-title>{{username}}</v-list-tile-title>
-                        </v-list-tile-content>
-                        <v-list-tile-action>
-                            <v-btn icon @click.native.stop="mini = !mini">
-                                <v-icon>chevron_left</v-icon>
-                            </v-btn>
-                        </v-list-tile-action>
-                    </v-list-tile>
-                </v-list>
-            </v-toolbar>
-            <v-list class="pt-0" dense>
-                <v-divider></v-divider>
-                <v-list-tile v-for="item in items" :key="item.title" @click="didClickItem(item.component)">
-                    <v-list-tile-action>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-            </v-list>
-        </v-navigation-drawer>
-        <v-toolbar fixed class="blue lighten-1" dark>
-            <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-toolbar-title>{{title}}</v-toolbar-title>
+        <v-toolbar fixed class="blue lighten-1" dark style="font-family: 'Eczar', serif;">
+       <v-toolbar-title>{{title}}</v-toolbar-title>
+       
+        <v-spacer></v-spacer>
+    <v-toolbar-items class="hidden-sm-and-down">
+    <v-btn flat>List</v-btn>
+      <v-btn  flat>Post</v-btn>
+      <v-btn flat>F.A.Q.</v-btn>
+    </v-toolbar-items>
         </v-toolbar>
     </div>
+    
 </template>
 
 
 <script>
-    import profileImg from '../assets/images/profile.png'
+    import profileImg from '../assets/images/profile.png';
+    // import home from 'Home/index.vue';
+
     export default {
         data () {
             return {
                 drawer: false,
                 mini: false,
-                right: null
+                right: null,
             }
         },
         props: {

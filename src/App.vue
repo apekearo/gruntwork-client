@@ -4,7 +4,7 @@
                  :onClickItem="onChangePage"
         >
         </app-nav>
-        <main>
+        <v-content>
             <v-container fluid :class="{'app__content--no-padding': currentPage === 'app-home'}" class="app__content">
                 <component :is="currentPage" 
                            :onClickStartBtn="onChangePage"
@@ -18,7 +18,7 @@
                 </component>
                 <!--v-router-->
             </v-container>
-        </main>
+        </v-content>
 
         <!-- <v-layout row wrap child-flex-sm>
           <v-flex xs5>
@@ -90,6 +90,7 @@
         },
         methods: {
             onChangePage (componentName) {
+                console.log(componentName)
                 this.currentPage = componentName
             },
             login (user) {

@@ -9,8 +9,9 @@
         <v-text-field append-icon="search" label="Search" single-line hide-details v-model="search"></v-text-field>
       </v-card-title>
       <!-- adding help button -->
-      <v-dialog v-model="dialog" lazy absolute>
+      <v-dialog v-model="dialog" max-width="490" lazy absolute>
           <v-btn small class="green accent-3 grey--text" slot ="activator">How To Use List</v-btn>
+          
           <v-card>
               <v-card-title>
                   <div class="headline">How To Use Hey Earl</div>
@@ -20,6 +21,7 @@
                  Each listing can easily be searched by the zip code.
             </v-card-text>
           </v-card>
+          
       </v-dialog>
     
           <v-data-table :headers="headers" :items="tableItems" :search="search">
