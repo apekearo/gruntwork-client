@@ -82,7 +82,7 @@
                 headerItems: [
                     { title: 'Home', icon: 'home', component: 'app-home' },
                     { title: 'Job board', icon: 'dashboard', component: 'app-job-board' },
-                    { title: 'Post a job', icon: 'work', component: 'app-post' }
+                    { title: 'Post a job', icon: 'work', component: 'app-post' },
                 ],
                 currentPage: 'app-home',
                 currentUser: null
